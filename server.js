@@ -8,16 +8,6 @@ require('dotenv').config()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-// SEQUELIZE CONNECTION
-const sequelize = new Sequelize(process.env.PG_URI)
-try{
-    sequelize.authenticate()
-    console.log('Connected 🐘')
-}catch(err){
-    console.log('🚫:', err)
-
-}
-
 // ROOT
 app.get('/', (req, res) => {
     res.status(200).json({
